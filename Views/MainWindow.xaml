@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" 
         Height="600" 
-        Width="1000"
-        ResizeMode="NoResize">
+        Width="1100"
+        ResizeMode="NoResize"
+        Icon="\Images\basket.png">
     <Grid x:Name="MyGrid">
         
     </Grid>

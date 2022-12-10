@@ -1,4 +1,5 @@
 ﻿using ADO.NET_Task3.Commands;
+using ADO.NET_Task3.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,9 +64,5 @@ namespace ADO.NET_Task3.ViewModels
 
             });
         }
-
-
-
-
     }
 }

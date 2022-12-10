@@ -6,11 +6,11 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:local="clr-namespace:ADO.NET_Task3.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="600"
-             d:DesignWidth="1000"
-             Height="600"
-             Width="1000">
-    <Grid Background="PapayaWhip">
+             d:DesignHeight="570"
+             d:DesignWidth="1100"
+             Height="570"
+             Width="1100">
+    <Grid Background="#0197F6">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="8*"></RowDefinition>
@@ -26,7 +26,7 @@
                 <TextBlock FontSize="25" 
                            TextAlignment="Center"
                            FontWeight="Black"
-                           Foreground="#547FCA"
+                           Foreground="DarkBlue"
                            Margin="0,5,0,0"
                            Text="Domoland">
                 </TextBlock>
@@ -47,7 +47,7 @@
                          x:Name="SearchTB"
                          Background="Transparent"
                          Width="300"
-                         Margin="20,0,0,0"
+                         Margin="32,0,0,0"
                          Height="35"
                          FontSize="25"
                          Padding="4,0,4,0"
@@ -124,6 +124,119 @@
                 </Button>
 
             </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1"
+              Grid.Column="0">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Store"
+                           FontSize="16"
+                           Margin="35,0,0,0"
+                           Cursor="Hand"
+                           FontWeight="Bold"
+                           Foreground="DarkBlue">
+                </TextBlock>
+
+                <TextBlock Text="Catalog"
+                           FontSize="22"
+                           Cursor="Hand"
+                           FontFamily="Comic Sans MS"
+                           Margin="35,0,0,0">
+                </TextBlock>
+
+                <TextBlock Text="Store adresses"
+                           FontSize="22"
+                           Cursor="Hand"
+                           FontFamily="Comic Sans MS"
+                           Margin="35,0,0,0">
+                </TextBlock>
+
+                <TextBlock Text="Delivery"
+                           FontSize="22"
+                           Cursor="Hand"
+                           FontFamily="Comic Sans MS"
+                           Margin="35,0,0,0">
+                </TextBlock>
+
+                <!---->
+
+                <TextBlock Text="Company"
+                           FontSize="16"
+                           Cursor="Hand"
+                           Margin="35,20,0,0"
+                           FontWeight="Bold"
+                           Foreground="DarkBlue">
+                </TextBlock>
+
+                <TextBlock Text="Services"
+                           FontSize="22"
+                           Cursor="Hand"
+                           FontFamily="Comic Sans MS"
+                           Margin="35,0,0,0">
+                </TextBlock>
+
+                <TextBlock Text="About Us"
+                           FontSize="22"
+                           FontFamily="Comic Sans MS"
+                           Cursor="Hand"
+                           Margin="35,0,0,0">
+                </TextBlock>
+
+                <TextBlock Text="Reviews"
+                           FontSize="22"
+                           FontFamily="Comic Sans MS"
+                           Cursor="Hand"
+                           Margin="35,0,0,0">
+                </TextBlock>
+
+                <TextBlock Text="Contacts"
+                           FontSize="22"
+                           Cursor="Hand"
+                           FontFamily="Comic Sans MS"
+                           Margin="35,0,0,0">
+                </TextBlock>
+
+                <!---->
+
+                <TextBlock Text="Your Domoland"
+                           FontSize="16"
+                           Cursor="Hand"
+                           Margin="35,20,0,0"
+                           FontWeight="Bold"
+                           Foreground="DarkBlue">
+                </TextBlock>
+
+                <TextBlock Text="Articles"
+                           FontSize="22"
+                           Cursor="Hand"
+                           FontFamily="Comic Sans MS"
+                           Margin="35,0,0,0">
+                </TextBlock>
+
+                <TextBlock Text="Favorites"
+                           FontSize="22"
+                           Cursor="Hand"
+                           FontFamily="Comic Sans MS"
+                           Margin="35,0,0,0">
+                </TextBlock>
+
+                <TextBlock Text="Comparison"
+                           Cursor="Hand"
+                           FontSize="22"
+                           FontFamily="Comic Sans MS"
+                           Margin="35,0,0,0">
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1"
+              Grid.Column="1">
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                          VerticalScrollBarVisibility="Auto" Width="860" HorizontalAlignment="Center">
+                <WrapPanel x:Name="ProductsWrapPanel">
+
+                </WrapPanel>
+            </ScrollViewer>
         </Grid>
     </Grid>
 </UserControl>

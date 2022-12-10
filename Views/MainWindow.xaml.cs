@@ -1,4 +1,5 @@
-﻿using ADO.NET_Task3.ViewModels;
+﻿using ADO.NET_Task3.Helpers;
+using ADO.NET_Task3.ViewModels;
 using ADO.NET_Task3.Views;
 using System;
 using System.Collections.Generic;
@@ -29,10 +30,13 @@ namespace ADO.NET_Task3
             this.DataContext = mainWindowViewModel;
             App.MyGrid = MyGrid;
             var homePage = new HomePageUC();
+            App.ProductsWrapPanel = homePage.ProductsWrapPanel;
             var homePageViewModel = new HomePageUCViewModel();
             homePage.DataContext = homePageViewModel;
             homePageViewModel.SearchTb = homePage.SearchTB;
             App.MyGrid.Children.Add(homePage);
+            var dbHelper = new DatabaseHelper();
+            dbHelper.AddProductsToViewFromDatabase(800 ,20);
         }
     }
 }

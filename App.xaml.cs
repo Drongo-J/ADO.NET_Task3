@@ -15,5 +15,6 @@ namespace ADO.NET_Task3
     public partial class App : Application
     {
         public static Grid MyGrid { get; internal set; }
+        public static WrapPanel ProductsWrapPanel { get; internal set; }
     }
 }

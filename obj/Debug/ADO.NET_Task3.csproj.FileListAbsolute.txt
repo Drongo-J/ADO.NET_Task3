@@ -23,3 +23,7 @@ C:\Users\Hafiz\source\repos\ADO.NET_Task3\bin\Debug\System.Windows.Interactivity
 C:\Users\Hafiz\source\repos\ADO.NET_Task3\obj\Debug\ADO.NET_Task3.csproj.CopyComplete
 C:\Users\Hafiz\source\repos\ADO.NET_Task3\obj\Debug\Dictionaries\Dictionary.baml
 C:\Users\Hafiz\source\repos\ADO.NET_Task3\obj\Debug\App.baml
+C:\Users\Hafiz\source\repos\ADO.NET_Task3\obj\Debug\Views\ProductUC.g.cs
+C:\Users\Hafiz\source\repos\ADO.NET_Task3\obj\Debug\Views\ProductUC.baml
+C:\Users\Hafiz\source\repos\ADO.NET_Task3\obj\Debug\Views\MoreAboutProductWindow.g.cs
+C:\Users\Hafiz\source\repos\ADO.NET_Task3\obj\Debug\Views\MoreAboutProductWindow.baml
