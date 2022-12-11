@@ -19,7 +19,7 @@ namespace ADO.NET_Task3.Helpers
 {
     public class DatabaseHelper
     {
-        public static async void AddProductsToCollectionFromDatabase(int skip_count, int get_count, ICollection<ProductUC> collection)
+        public async Task AddProductsToCollectionFromDatabase(int skip_count, int get_count, ICollection<ProductUC> collection)
         {
             using (var conn = new SqlConnection())
             {
@@ -95,8 +95,30 @@ namespace ADO.NET_Task3.Helpers
             }
         }
 
+        public async Task DeleteProductById(int id)
+        {
+            using (var conn = new SqlConnection())
+            {
+                conn.ConnectionString = ConfigurationManager.ConnectionStrings[Constants.ConnectionString].ConnectionString;
+                conn.Open();
 
+                SqlCommand command = conn.CreateCommand();
 
+                command.CommandText= @"DELETE FROM DistinctedProducts " +
+                               "WHERE Id = @id"; ;
+
+                var param = new SqlParameter()
+                {
+                    SqlDbType = SqlDbType.Int,
+                    SqlValue = id,
+                    ParameterName = "@id"
+                };
+
+                command.Parameters.Add(param);
+
+                await command.ExecuteNonQueryAsync();
+            }
+        }
     }
 }
 

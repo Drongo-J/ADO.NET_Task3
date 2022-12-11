@@ -19,21 +19,26 @@ namespace ADO.NET_Task3.ViewModels
         public RelayCommand MouseLeaveCommand { get; set; }
         public RelayCommand IsNotFocusedCommand { get; set; }
         public RelayCommand KeyDownCommand { get; set; }
-        public RelayCommand SearchCommand { get; set; } 
+        public RelayCommand SearchCommand { get; set; }
         public RelayCommand MoreCommand { get; set; }
+
+        public ObservableCollection<ProductUC> ProductViews { get; set; }
 
         public TextBox SearchTb { get; set; }
 
-        public ObservableCollection<ProductUC> ProductViews { get; set; } = new ObservableCollection<ProductUC>();
-
         public HomePageUCViewModel()
         {
-            DatabaseHelper.AddProductsToCollectionFromDatabase(400, 20, ProductViews);
+            ProductViews = App.ProductViews;
 
-            MoreCommand = new RelayCommand((uc) => 
+             App.DatabaseHelper.AddProductsToCollectionFromDatabase(400, 20, ProductViews);
+
+
+            //await AddProductsToViewAsync();
+                
+            MoreCommand = new RelayCommand((uc) =>
             {
                 var uc2 = uc;
-            
+
             });
 
             KeyDownCommand = new RelayCommand((key) =>
@@ -71,11 +76,16 @@ namespace ADO.NET_Task3.ViewModels
                 }
             });
 
-            SearchCommand = new RelayCommand((s) => 
+            SearchCommand = new RelayCommand((s) =>
             {
-                
+
 
             });
+        }
+
+        private async Task AddProductsToViewAsync()
+        {
+            await App.DatabaseHelper.AddProductsToCollectionFromDatabase(400, 20, App.ProductViews);
         }
     }
 }

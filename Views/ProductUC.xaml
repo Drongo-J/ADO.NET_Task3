@@ -25,6 +25,11 @@
                            FontWeight="Bold"
                            Margin="10,0">
                 </TextBlock>
+
+                <TextBlock Text="{Binding Product.Id}"
+                           x:Name="Id"
+                           Foreground="Transparent">
+                </TextBlock>
             </StackPanel>
 
             <StackPanel Height="150">

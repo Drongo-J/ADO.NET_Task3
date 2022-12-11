@@ -32,7 +32,7 @@ namespace ADO.NET_Task3.ViewModels
             MoreCommand = new RelayCommand((e) =>
             {
                 var aboutProductView = new MoreAboutProductWindow();
-                var aboutProductViewModel = new MoreAboutProductWindowViewModel(Product, ImageSource);
+                var aboutProductViewModel = new MoreAboutProductWindowViewModel(Product, ImageSource, aboutProductView);
                 aboutProductView.DataContext = aboutProductViewModel;
                 aboutProductView.Show();    
             });
