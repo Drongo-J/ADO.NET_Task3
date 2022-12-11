@@ -23,24 +23,9 @@ namespace ADO.NET_Task3.Helpers
                 if (!source.Contains("https://"))
                     source = "https://" + source;
 
-                BitmapImage bi3 = new BitmapImage();
-                bi3.BeginInit();
-                bi3.UriSource = new Uri(source, UriKind.RelativeOrAbsolute);
-                bi3.CacheOption = BitmapCacheOption.OnLoad;
-                bi3.EndInit();
-                return bi3;
-
-                //using (var client = new HttpClient())
-                //{
-                //    using (var response = await client.GetAsync(source))
-                //    {
-                //        byte[] imageBytes =
-                //            await response.Content.ReadAsByteArrayAsync();
-
-                //        return ByteImageConverter.ByteToImage(imageBytes);
-                //    }
-                //}
-
+                var imgUrl = new Uri(source);
+                var imageData = new WebClient().DownloadData(imgUrl);
+                return ByteImageConverter.ByteToImage(imageData);
             }
             catch (Exception)
             {
@@ -50,7 +35,7 @@ namespace ADO.NET_Task3.Helpers
         }
     }
 
-    public class ByteImageConverter
+    public class ByteImageConverter 
     {
         public static ImageSource ByteToImage(byte[] imageData)
         {

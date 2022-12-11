@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-             xmlns:local="clr-namespace:ADO.NET_Task3.Views"
+             xmlns:local="clr-namespace:ADO.NET_Task3.Views" xmlns:viewmodels="clr-namespace:ADO.NET_Task3.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="570"
              d:DesignWidth="1100"
@@ -43,7 +43,7 @@
         <Grid Grid.Row="0"
               Grid.Column="1">
             <StackPanel Orientation="Horizontal">
-                <TextBox Style="{StaticResource MyTextBoxStyle}"
+                <TextBox 
                          x:Name="SearchTB"
                          Background="Transparent"
                          Width="300"
@@ -232,10 +232,40 @@
         <Grid Grid.Row="1"
               Grid.Column="1">
             <ScrollViewer HorizontalScrollBarVisibility="Disabled"
-                          VerticalScrollBarVisibility="Auto" Width="860" HorizontalAlignment="Center">
-                <WrapPanel x:Name="ProductsWrapPanel">
+                          VerticalScrollBarVisibility="Auto" Height="Auto" Width="860" HorizontalAlignment="Center">
+                <ListView ItemContainerStyle="{StaticResource LvItemStyle}" Height="Auto" ItemsSource="{Binding ProductViews}" Background="#0197F6" RenderTransformOrigin="0.5,0.5">
+                    <ListView.View>
+                        <GridView ColumnHeaderContainerStyle="{StaticResource myHeaderStyle}">
+                            <GridViewColumn>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <local:ProductUC HorizontalAlignment="Left" x:Name="ProductUC">
+                                            <local:ProductUC.InputBindings>
+                                                <MouseBinding MouseAction="{x:Static MouseAction.LeftDoubleClick}"
+                                                              Command="{Binding ViewModel.MoreCommand}"
+                                                              CommandParameter="{Binding ElementName=ProductUC}" />  
+                                            </local:ProductUC.InputBindings>
+                                        </local:ProductUC>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
 
-                </WrapPanel>
+                    <ListView.Template>
+                        <ControlTemplate TargetType="ListView">
+                            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderBrush}">
+                                <ItemsPresenter/>
+                            </Border>
+                        </ControlTemplate>
+                    </ListView.Template>
+
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Height="Auto" Width="820"></WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                </ListView>
             </ScrollViewer>
         </Grid>
     </Grid>

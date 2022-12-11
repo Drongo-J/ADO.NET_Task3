@@ -1,4 +1,6 @@
-﻿using ADO.NET_Task3.Models;
+﻿using ADO.NET_Task3.Commands;
+using ADO.NET_Task3.Helpers;
+using ADO.NET_Task3.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,9 @@ namespace ADO.NET_Task3.ViewModels
 {
     public class MoreAboutProductWindowViewModel : BaseViewModel
     {
+        public RelayCommand DeleteCommand { get; set; }
+        public RelayCommand SaveChangesCommand { get; set; }
+
         public Product Product { get; set; }
 
         private ImageSource imageSource;
@@ -25,6 +30,10 @@ namespace ADO.NET_Task3.ViewModels
         {
             Product = product;
             ImageSource = _imageSource;
+
+            DeleteCommand = new RelayCommand((d) =>
+            {
+            });
         }
     }
 }

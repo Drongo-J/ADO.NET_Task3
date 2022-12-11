@@ -19,14 +19,14 @@ namespace ADO.NET_Task3.Helpers
 {
     public class DatabaseHelper
     {
-        public async void AddProductsToViewFromDatabase(int skip_count, int get_count)
+        public static async void AddProductsToCollectionFromDatabase(int skip_count, int get_count, ICollection<ProductUC> collection)
         {
             using (var conn = new SqlConnection())
             {
                 conn.ConnectionString = ConfigurationManager.ConnectionStrings[Constants.ConnectionString].ConnectionString;
                 conn.Open();
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = @"SELECT DISTINCT * FROM Products " +
+                command.CommandText = @"SELECT DISTINCT * FROM DistinctedProducts " +
                                         "WHERE ProductDescription <> '' " +
                                         "ORDER BY Id ASC " +
                                         "OFFSET @skip_count ROWS " +
@@ -49,6 +49,7 @@ namespace ADO.NET_Task3.Helpers
                 command.Parameters.Add(param1);
                 command.Parameters.Add(param2);
 
+                var addedProductNames = new List<String>();
                 using (SqlDataReader reader = await command.ExecuteReaderAsync())
                 {
                     while (await reader.ReadAsync())
@@ -84,11 +85,18 @@ namespace ADO.NET_Task3.Helpers
                         product.ReducedPrice += "$";
                         var productViewModel = new ProductUCViewModel(product);
                         productView.DataContext = productViewModel;
-                        App.ProductsWrapPanel.Children.Add(productView);
+                        if (!addedProductNames.Contains(product.Name))
+                        {
+                            addedProductNames.Add(product.Name);
+                            collection.Add(productView);
+                        }
                     }
                 }
             }
         }
+
+
+
     }
 }
 

@@ -1,11 +1,14 @@
 ﻿using ADO.NET_Task3.Commands;
 using ADO.NET_Task3.Helpers;
+using ADO.NET_Task3.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace ADO.NET_Task3.ViewModels
@@ -16,13 +19,23 @@ namespace ADO.NET_Task3.ViewModels
         public RelayCommand MouseLeaveCommand { get; set; }
         public RelayCommand IsNotFocusedCommand { get; set; }
         public RelayCommand KeyDownCommand { get; set; }
-        public RelayCommand SearchCommand { get; set; }
+        public RelayCommand SearchCommand { get; set; } 
+        public RelayCommand MoreCommand { get; set; }
 
         public TextBox SearchTb { get; set; }
-        public string DefaultText = "Search for product . . .";
+
+        public ObservableCollection<ProductUC> ProductViews { get; set; } = new ObservableCollection<ProductUC>();
 
         public HomePageUCViewModel()
         {
+            DatabaseHelper.AddProductsToCollectionFromDatabase(400, 20, ProductViews);
+
+            MoreCommand = new RelayCommand((uc) => 
+            {
+                var uc2 = uc;
+            
+            });
+
             KeyDownCommand = new RelayCommand((key) =>
             {
                 var _key = key as string;
@@ -34,7 +47,7 @@ namespace ADO.NET_Task3.ViewModels
 
             MouseEnterCommand = new RelayCommand((m) =>
             {
-                if (SearchTb.Text.Trim() == DefaultText)
+                if (SearchTb.Text.Trim() == Constants.SearchBoxDefaultText)
                 {
                     SearchTb.Text = String.Empty;
                 }
@@ -44,7 +57,7 @@ namespace ADO.NET_Task3.ViewModels
             {
                 if (SearchTb.Text.Trim() == String.Empty && SearchTb.IsFocused == false)
                 {
-                    SearchTb.Text = DefaultText;
+                    SearchTb.Text = Constants.SearchBoxDefaultText;
                 }
             });
 
@@ -52,9 +65,9 @@ namespace ADO.NET_Task3.ViewModels
             IsNotFocusedCommand = new RelayCommand((i) =>
             {
                 string text = SearchTb.Text.Trim();
-                if (text == String.Empty || text == DefaultText)
+                if (text == String.Empty || text == Constants.SearchBoxDefaultText)
                 {
-                    SearchTb.Text = DefaultText;
+                    SearchTb.Text = Constants.SearchBoxDefaultText;
                 }
             });
 

@@ -27,3 +27,4 @@ C:\Users\Hafiz\source\repos\ADO.NET_Task3\obj\Debug\Views\ProductUC.g.cs
 C:\Users\Hafiz\source\repos\ADO.NET_Task3\obj\Debug\Views\ProductUC.baml
 C:\Users\Hafiz\source\repos\ADO.NET_Task3\obj\Debug\Views\MoreAboutProductWindow.g.cs
 C:\Users\Hafiz\source\repos\ADO.NET_Task3\obj\Debug\Views\MoreAboutProductWindow.baml
+C:\Users\Hafiz\source\repos\ADO.NET_Task3\obj\Debug\GeneratedInternalTypeHelper.g.cs

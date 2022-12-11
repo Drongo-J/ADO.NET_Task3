@@ -1,5 +1,7 @@
-﻿using System;
+﻿using ADO.NET_Task3.Views;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data;
 using System.Linq;
@@ -15,6 +17,5 @@ namespace ADO.NET_Task3
     public partial class App : Application
     {
         public static Grid MyGrid { get; internal set; }
-        public static WrapPanel ProductsWrapPanel { get; internal set; }
-    }
+    }   
 }

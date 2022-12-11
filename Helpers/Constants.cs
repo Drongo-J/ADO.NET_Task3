@@ -9,6 +9,6 @@ namespace ADO.NET_Task3.Helpers
     public class Constants
     {
         public const string ConnectionString = "MyConnString";
-
+        public const string SearchBoxDefaultText = "Search for product . . .";
     }
 }

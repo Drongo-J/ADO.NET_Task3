@@ -30,13 +30,11 @@ namespace ADO.NET_Task3
             this.DataContext = mainWindowViewModel;
             App.MyGrid = MyGrid;
             var homePage = new HomePageUC();
-            App.ProductsWrapPanel = homePage.ProductsWrapPanel;
             var homePageViewModel = new HomePageUCViewModel();
             homePage.DataContext = homePageViewModel;
             homePageViewModel.SearchTb = homePage.SearchTB;
             App.MyGrid.Children.Add(homePage);
-            var dbHelper = new DatabaseHelper();
-            dbHelper.AddProductsToViewFromDatabase(800 ,20);
+            //DatabaseHelper.AddProductsToListFromDatabase(402,20);
         }
     }
 }

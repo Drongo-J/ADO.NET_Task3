@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ADO.NET_Task3.Views"
         mc:Ignorable="d"
         Title="MoreAboutProductWindow" 
-        Height="700"
+        Height="750"
         Width="1300"
         ResizeMode="NoResize"   >
     <StackPanel Orientation="Horizontal">
@@ -17,6 +17,11 @@
                    Margin="40"
                    Source="{Binding ImageSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             </Image>
+            <StackPanel Orientation="Horizontal"
+                        Height="100">
+                <Button Style="{StaticResource MyButtonStyle}" Content="Delete Product" Command="{Binding DeleteCommand}"></Button>
+                <Button Style="{StaticResource MyButtonStyle}" Content="Save Changes" Background="Yellow" Command="{Binding SaveChangesCommand}"></Button>
+            </StackPanel>
         </StackPanel>
 
         <StackPanel Width="650">
@@ -29,7 +34,7 @@
                        FontWeight="Bold">
                 </TextBlock>
             </StackPanel>
-            <StackPanel Height="500"
+            <StackPanel Height="700"
                         Orientation="Horizontal">
                 <StackPanel Width="160">
                     <TextBlock Height="40"
@@ -61,7 +66,7 @@
                        FontSize="20"
                        FontWeight="Bold">
                     </TextBlock>
-                    
+
                     <TextBlock Height="40"
                        Text="Brand"
                        Margin="10"
@@ -93,8 +98,8 @@
                     </TextBlock>
                 </StackPanel>
 
-                <StackPanel Width="490">
-                    <TextBlock Height="40"
+                <StackPanel Width="520">
+                    <TextBox Height="40"
                        Text="{Binding Product.Price}"
                        Margin="10"
                        Width="480"
@@ -102,9 +107,9 @@
                        TextWrapping="Wrap"
                        FontSize="20"
                        FontWeight="Medium">
-                    </TextBlock>
+                    </TextBox>
 
-                    <TextBlock Height="40"
+                    <TextBox Height="40"
                        Text="{Binding Product.Colour}"
                        Margin="10"
                        Width="480"
@@ -112,9 +117,9 @@
                        TextWrapping="Wrap"
                        FontSize="20"
                        FontWeight="Medium">
-                    </TextBlock>
+                    </TextBox>
 
-                    <TextBlock Height="40"
+                    <TextBox Height="40"
                        Text="{Binding Product.CategoryName}"
                        Margin="10"
                        Width="480"
@@ -122,9 +127,9 @@
                        TextWrapping="Wrap"
                        FontSize="20"
                        FontWeight="Medium">
-                    </TextBlock>
+                    </TextBox>
 
-                    <TextBlock Height="40"
+                    <TextBox Height="40"
                        Text="{Binding Product.BrandName}"
                        Margin="10"
                        Width="480"
@@ -132,9 +137,9 @@
                        TextWrapping="Wrap"
                        FontSize="20"
                        FontWeight="Medium">
-                    </TextBlock>
+                    </TextBox>
 
-                    <TextBlock Height="40"
+                    <TextBox Height="40"
                        Text="{Binding Product.ProductRating}"
                        Margin="10"
                        Width="480"
@@ -142,17 +147,17 @@
                        TextWrapping="Wrap"
                        FontSize="20"
                        FontWeight="Medium">
-                    </TextBlock>
+                    </TextBox>
 
-                    <TextBlock Height="Auto"
+                    <TextBox Height="250"
                        Text="{Binding Product.ProductDescription}"
                        Margin="10"
-                       Width="460"
+                       Width="480"
                        HorizontalAlignment="Left"
                        TextWrapping="Wrap"
                        FontSize="20"
                        FontWeight="Medium">
-                    </TextBlock>
+                    </TextBox>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
