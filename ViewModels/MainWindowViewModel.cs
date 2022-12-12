@@ -9,7 +9,5 @@ namespace ADO.NET_Task3.ViewModels
     public class MainWindowViewModel : BaseViewModel
     {
 
-
-
     }
 }

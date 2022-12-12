@@ -22,19 +22,15 @@ namespace ADO.NET_Task3.ViewModels
         public RelayCommand SearchCommand { get; set; }
         public RelayCommand MoreCommand { get; set; }
 
-        public ObservableCollection<ProductUC> ProductViews { get; set; }
+        public ObservableCollection<ProductUC> ProductViews { get; set; } = new ObservableCollection<ProductUC>();
 
         public TextBox SearchTb { get; set; }
 
         public HomePageUCViewModel()
         {
-            ProductViews = App.ProductViews;
+            App.ProductViews = ProductViews;
+            DatabaseHelper.AddProductsToCollectionFromDatabase(400, 20, ProductViews);
 
-             App.DatabaseHelper.AddProductsToCollectionFromDatabase(400, 20, ProductViews);
-
-
-            //await AddProductsToViewAsync();
-                
             MoreCommand = new RelayCommand((uc) =>
             {
                 var uc2 = uc;
@@ -81,11 +77,6 @@ namespace ADO.NET_Task3.ViewModels
 
 
             });
-        }
-
-        private async Task AddProductsToViewAsync()
-        {
-            await App.DatabaseHelper.AddProductsToCollectionFromDatabase(400, 20, App.ProductViews);
         }
     }
 }

@@ -20,7 +20,8 @@
             <StackPanel Orientation="Horizontal"
                         Height="100">
                 <Button Style="{StaticResource MyButtonStyle}" Content="Delete Product" Command="{Binding DeleteCommand}"></Button>
-                <Button Style="{StaticResource MyButtonStyle}" Content="Save Changes" Background="Yellow" Command="{Binding SaveChangesCommand}"></Button>
+                <Button Style="{StaticResource MyButtonStyle}" Content="Save Changes" Command="{Binding SaveChangesCommand}">
+                </Button>
             </StackPanel>
         </StackPanel>
 

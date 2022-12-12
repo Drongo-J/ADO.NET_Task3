@@ -19,7 +19,7 @@ namespace ADO.NET_Task3.Helpers
 {
     public class DatabaseHelper
     {
-        public async Task AddProductsToCollectionFromDatabase(int skip_count, int get_count, ICollection<ProductUC> collection)
+        public static async Task AddProductsToCollectionFromDatabase(int skip_count, int get_count, ICollection<ProductUC> collection)
         {
             using (var conn = new SqlConnection())
             {
@@ -95,7 +95,7 @@ namespace ADO.NET_Task3.Helpers
             }
         }
 
-        public async Task DeleteProductById(int id)
+        public static async Task DeleteProductById(int id)
         {
             using (var conn = new SqlConnection())
             {
@@ -104,7 +104,7 @@ namespace ADO.NET_Task3.Helpers
 
                 SqlCommand command = conn.CreateCommand();
 
-                command.CommandText= @"DELETE FROM DistinctedProducts " +
+                command.CommandText = @"DELETE FROM DistinctedProducts " +
                                "WHERE Id = @id"; ;
 
                 var param = new SqlParameter()
@@ -115,6 +115,86 @@ namespace ADO.NET_Task3.Helpers
                 };
 
                 command.Parameters.Add(param);
+
+                await command.ExecuteNonQueryAsync();
+            }
+        }
+
+        public static async Task UpdateProduct(Product product)
+        {
+            using (var conn = new SqlConnection())
+            {
+                conn.ConnectionString = ConfigurationManager.ConnectionStrings[Constants.ConnectionString].ConnectionString;
+                conn.Open();
+
+                SqlCommand command = conn.CreateCommand();
+
+                command.CommandText = @"UPDATE DistinctedProducts " +
+                                       "SET " +
+                                       "Price = @price, " +
+                                       "Colour = @colour, " +
+                                       "CategoryName = @categoryName, " +
+                                       "BrandName = @brandName, " +
+                                       "ProductRating = @productRating, " +
+                                       "ProductDescription = @productDescription " +
+                                       "WHERE Id = @id";
+
+                var param = new SqlParameter()
+                {
+                    SqlDbType = SqlDbType.Int,
+                    SqlValue = product.Id,
+                    ParameterName = "@id"
+                };
+
+                var param2 = new SqlParameter()
+                {
+                    SqlDbType = SqlDbType.NVarChar,
+                    SqlValue = product.Price,
+                    ParameterName = "@price"
+                };
+
+                var param3 = new SqlParameter()
+                {
+                    SqlDbType = SqlDbType.NVarChar,
+                    SqlValue = product.Colour,
+                    ParameterName = "@colour"
+                };
+
+                var param4 = new SqlParameter()
+                {
+                    SqlDbType = SqlDbType.NVarChar,
+                    SqlValue = product.CategoryName,
+                    ParameterName = "@categoryName"
+                };
+
+                var param5 = new SqlParameter()
+                {
+                    SqlDbType = SqlDbType.NVarChar,
+                    SqlValue = product.BrandName,
+                    ParameterName = "@brandName"
+                };
+
+                var param6 = new SqlParameter()
+                {
+                    SqlDbType = SqlDbType.NVarChar,
+                    SqlValue = product.ProductRating,
+                    ParameterName = "@productRating"
+                };
+
+                var param7 = new SqlParameter()
+                {
+                    SqlDbType = SqlDbType.NVarChar,
+                    SqlValue = product.ProductDescription,
+                    ParameterName = "@productDescription"
+                };
+
+                command.Parameters.Add(param);
+                command.Parameters.Add(param2);
+                command.Parameters.Add(param3);
+                command.Parameters.Add(param4);
+                command.Parameters.Add(param5);
+                command.Parameters.Add(param6);
+                command.Parameters.Add(param7);
 
                 await command.ExecuteNonQueryAsync();
             }

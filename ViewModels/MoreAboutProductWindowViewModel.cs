@@ -1,6 +1,7 @@
 ﻿using ADO.NET_Task3.Commands;
 using ADO.NET_Task3.Helpers;
 using ADO.NET_Task3.Models;
+using ADO.NET_Task3.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,14 @@ namespace ADO.NET_Task3.ViewModels
         public RelayCommand DeleteCommand { get; set; }
         public RelayCommand SaveChangesCommand { get; set; }
 
-        public Product Product { get; set; }
+        private Product product;
+
+        public Product Product
+        {
+            get { return product; }
+            set { product = value; OnPropertyChanged(); }
+        }
+
 
         private ImageSource imageSource;
 
@@ -37,11 +45,21 @@ namespace ADO.NET_Task3.ViewModels
 
             DeleteCommand = new RelayCommand(async (d) =>
             {
-                await App.DatabaseHelper.DeleteProductById(Product.Id);
+                await DatabaseHelper.DeleteProductById(Product.Id);
                 ProductWindow.Close();
                 MessageBox.Show("Product was deleted successfully!");
-                var view = App.ProductViews.FirstOrDefault(p => (p.DataContext as ProductUCViewModel).Product.Id == Product.Id);
-                App.ProductViews.Remove(view);
+                //DatabaseHelper.AddProductsToCollectionFromDatabase(400,20, ((App.MyGrid.Children[0] as HomePageUC).DataContext as HomePageUCViewModel).ProductViews);
+                //DatabaseHelper.AddProductsToCollectionFromDatabase(400, 20, App.ProductViews);
+                App.ProductViews.Remove(App.ProductViews.FirstOrDefault(p => p.Id.Text == Product.Id.ToString()));
+                //var view = ProductViews.FirstOrDefault(p => (p.DataContext as ProductUCViewModel).Product.Id == Product.Id);
+                //ProductViews.Remove(view);
+            });
+
+            SaveChangesCommand = new RelayCommand(async (e) => 
+            {
+                await DatabaseHelper.UpdateProduct(Product);
+                ProductWindow.Close();
+                MessageBox.Show("Product was updated successfully!");
             });
         }
     }

@@ -233,7 +233,7 @@
               Grid.Column="1">
             <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                           VerticalScrollBarVisibility="Auto" Height="Auto" Width="860" HorizontalAlignment="Center">
-                <ListView ItemContainerStyle="{StaticResource LvItemStyle}" Height="Auto" ItemsSource="{Binding App.ProductViews}" Background="#0197F6" RenderTransformOrigin="0.5,0.5">
+                <ListView ItemContainerStyle="{StaticResource LvItemStyle}" Height="Auto" ItemsSource="{Binding ProductViews,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="#0197F6" RenderTransformOrigin="0.5,0.5">
                     <ListView.View>
                         <GridView ColumnHeaderContainerStyle="{StaticResource myHeaderStyle}">
                             <GridViewColumn>

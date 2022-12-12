@@ -18,7 +18,6 @@ namespace ADO.NET_Task3
     public partial class App : Application
     {
         public static Grid MyGrid { get; internal set; }
-        public static DatabaseHelper DatabaseHelper { get; internal set; } = new DatabaseHelper();
         public static ObservableCollection<ProductUC> ProductViews { get; set; } = new ObservableCollection<ProductUC>();
     }   
 }
